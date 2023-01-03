@@ -154,4 +154,4 @@ class Calendar(QMainWindow, Ui_Main):
     def get_Date1(self, date):
         self.parent.dateEdit_1.setDate(date)
         self.parent.Cld_1.hide()
-
+#aaaa   
