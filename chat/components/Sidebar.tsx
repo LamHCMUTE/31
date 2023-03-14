@@ -1,5 +1,5 @@
 import { Message, Opacity } from "@mui/icons-material"
-import { Avatar, Button, Stack } from "@mui/material"
+import { Avatar, Box, Button, Grid, Paper, Stack, styled, Tab } from "@mui/material"
 import MessageIcon from '@mui/icons-material/Message';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Theme } from "@mui/system/createTheme/createTheme";
@@ -21,6 +21,13 @@ import Text from './Textmessage'
 import TextField from '@mui/material/TextField';
 import Textmessage from "./Textmessage";
 import RightMenu from "./RightMenu";
+import React from "react";
+import Body from "./Bodytext";
+import Bodytext from "./Bodytext";
+import Message_body from "./Message_body";
+import LeftMenu from "./LeftMenu";
+
+
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         icon: {
@@ -45,98 +52,114 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 const Sidebar = () => {
     const classes = useStyles()
+    const [value, setValue] = React.useState('1');
+
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    setValue(newValue);
+  };
+
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  }));
     return (
-        <Stack flexDirection={'row'} sx={{  }} >
+        <Grid container spacing={0} columns={30}>
 
-            <Stack flexDirection={'column'} sx={{backgroundColor:'#262626',width:'4%'}}>
-            {/* sx={{ backgroundColor: { md: 'green', xs: 'red' }, width: {md: '1',xs:'100'} }} */}
+            <Grid item xs={1} sx={{height:'970px',backgroundColor:'red'}}> 
+                <Paper sx={{backgroundColor:'black', height:'100%'}}>
+                    
+                    <LeftMenu />
+                </Paper>
+            </Grid>
+            
+            <Grid item xs={5}>
+                <Paper> <Bodytext/></Paper>
+            </Grid>
 
-                <Button sx={{
-                    marginTop: '180px', border: '1px solid white', width: '50px', borderRadius: '15px', marginLeft: '6px', cursor: 'pointer', "&:hover": {
-                        backgroundColor: 'black'}
-                }}
-                ><MessageIcon sx={{ fontSize: '50px', color: 'white'}} /></Button>
+            <Grid item xs={19}>
+                <Paper><Message_body/></Paper>
+            </Grid>
 
-                <Button className={classes.icon}
-                ><MenuIcon sx={{ fontSize: '50px',color: 'white' }} /></Button>
+            <Grid item xs={5}>
+                <Paper><RightMenu/></Paper>
+            </Grid>
 
-                <Button className={classes.icon}
-                ><TelegramIcon sx={{ fontSize: '50px',color: 'white' }} /></Button>
-
-                <Button className={classes.icon}
-                ><PersonAddIcon sx={{ fontSize: '50px',color: 'white' }} /></Button>
-
-                <Button sx={{
-                    marginTop: '273px', border: '1px solid white', width: '50px', borderRadius: '15px', marginLeft: '6px', cursor: 'pointer', color: 'white', "&:hover":
-                    {
-                        backgroundColor: 'black'
-                    } 
-                }}
-                ><NotificationsActiveIcon sx={{ fontSize: '50px' }} /></Button>
-
-                <Button className={classes.icon}
-                ><SettingsIcon sx={{ fontSize: '50px',color: 'white' }} /></Button>
-
-                <Button className={classes.icon}
-                ><AccountCircleIcon sx={{ fontSize: '50px',color: 'white' }} /></Button>
-                <Button></Button>
-            </Stack>
+        </Grid>
+        
+        // <Stack flexDirection={'row'} sx={{display:'flex'  }} > 
 
 
-            <Stack flexDirection={'column'} sx={{ backgroundColor: '#262626', width: '370px' }}>
-                <Stack flexDirection={'row'} sx={{ backgroundColor: '#262626', height: '70px' }}>
-                    <Stack>
-                        <Stack sx={{
-                            fontSize: '16pt', fontWeight: 'Bold', textAlign: 'center', m: '10px', mt: '20px', color: 'white'
-                        }}>Recent Message</Stack>
-                    </Stack>
-                    <Button><ArrowDropDownIcon sx={{ fontSize: '30px', color: 'white' }} />
-                    </Button>
-                    <Button><BorderColorIcon sx={{ fontSize: '20px', ml: '100px', color: 'white' }} />
-                    </Button>
-                </Stack>
+        //     <Stack flexDirection={'column'} sx={{ backgroundColor:'#262626',width:'4%'}}>
+        //     {/* sx={{ backgroundColor: { md: 'green', xs: 'red' }, width: {md: '1',xs:'100'} }} */}
 
-                <Stack flexDirection={'row'} sx={{ backgroundColor: 'black', m: '5px 20px', borderRadius: '8px' }}>
-                    <Button sx={{ "&:hover": { backgroundColor: '#262626' }, color: 'white', fontSize: '12pt', m: '10px', width: '200px' }}>
-                        Chat</Button>
-                    <Button sx={{ "&:hover": { backgroundColor: '#262626' }, color: 'white', fontSize: '12pt', m: '10px', width: '200px' }}>
-                        Group</Button>
-                </Stack>
+        //         {/* <Button sx={{
+        //             marginTop: '180px', border: '1px solid white', width: '50px', borderRadius: '15px', marginLeft: '6px', cursor: 'pointer', "&:hover": {
+        //                 backgroundColor: 'black'}
+        //         }}
+        //         ><MessageIcon sx={{ fontSize: '50px', color: 'white'}} /></Button>
 
-                <Stack> <Avatara /> </Stack>
-            </Stack>
+        //         <Button className={classes.icon}
+        //         ><MenuIcon sx={{ fontSize: '50px',color: 'white' }} /></Button>
 
-            <Stack flexDirection={'column'} sx={{ backgroundColor: '#262626', width: '1100px' }}>
+        //         <Button className={classes.icon}
+        //         ><TelegramIcon sx={{ fontSize: '50px',color: 'white' }} /></Button>
 
-                <Stack flexDirection={'row'} sx={{ backgroundColor: '#262626' }}>
-                    <Button><AccountCircleOutlinedIcon sx={{ color: 'white', fontSize: '70px' }} />
-                    </Button>
-                    <Stack flexDirection={'column'} >
-                        <Stack sx={{
-                            mt: '10px', ml: '20px', fontSize: '16pt', fontWeight: 'Bold', m: '10px', color: 'white'
-                        }}>Xshinla</Stack>
-                        <Stack sx={{
-                            fontSize: '12pt', m: '10px', color: 'white'
-                        }}>Active</Stack>
-                    </Stack>
-                    <Button sx={{ ml: '730px' }}><LocalPhoneIcon sx={{ color: 'white', fontSize: '30px' }} /></Button>
-                    <Button><VideocamIcon sx={{ color: 'white', fontSize: '30px' }} /></Button>
-                    <Button><MoreVertIcon sx={{ color: 'white', fontSize: '30px' }} /></Button>
-                </Stack>
+        //         <Button className={classes.icon}
+        //         ><PersonAddIcon sx={{ fontSize: '50px',color: 'white' }} /></Button>
 
-                <Stack flexDirection={'column'} sx={{ backgroundColor: 'black', height: '800px' }}></Stack>
+        //         <Button sx={{
+        //             marginTop: '273px', border: '1px solid white', width: '50px', borderRadius: '15px', marginLeft: '6px', cursor: 'pointer', color: 'white', "&:hover":
+        //             {
+        //                 backgroundColor: 'black'
+        //             } 
+        //         }}
+        //         ><NotificationsActiveIcon sx={{ fontSize: '50px' }} /></Button>
 
-                <Stack flexDirection={'row'} sx={{ backgroundColor: 'black', height: '60px', m: '10px 15px', borderRadius: '8px', color: 'white' }}>
-                    <Textmessage />
-                </Stack>
+        //         <Button className={classes.icon}
+        //         ><SettingsIcon sx={{ fontSize: '50px',color: 'white' }} /></Button>
 
-            </Stack>
+        //         <Button className={classes.icon}
+        //         ><AccountCircleIcon sx={{ fontSize: '50px',color: 'white' }} /></Button>
+        //         <Button></Button> */}
+        //         <LeftMenu/>
+        //     </Stack>
 
-            <Stack flexDirection={'column'} sx={{ backgroundColor: 'black', width: '331px'}}>
-                <RightMenu/>
-            </Stack>
 
-        </Stack>
+        //     <Stack flexDirection={'column'} sx={{ backgroundColor: '#262626', width: '370px' }}>
+        //         {/* <Stack flexDirection={'row'} sx={{ backgroundColor: '#262626', height: '70px' }}>
+        //             <Stack>
+        //                 <Stack sx={{
+        //                     fontSize: '16pt', fontWeight: 'Bold', textAlign: 'center', m: '10px', mt: '20px', color: 'white'
+        //                 }}>Recent Message</Stack>
+        //             </Stack>
+        //             <Button><ArrowDropDownIcon sx={{ fontSize: '30px', color: 'white' }} />
+        //             </Button>
+        //             <Button><BorderColorIcon sx={{ fontSize: '20px', ml: '100px', color: 'white' }} />
+        //             </Button>
+        //         </Stack>
+
+        //         <Stack flexDirection={'row'} sx={{ backgroundColor: 'black', m: '5px 20px', borderRadius: '8px' }}>
+        //             <Button sx={{ "&:hover": { backgroundColor: '#262626' }, color: 'white', fontSize: '12pt', m: '10px', width: '200px' }}>
+        //                 Chat</Button>
+        //             <Button sx={{ "&:hover": { backgroundColor: '#262626' }, color: 'white', fontSize: '12pt', m: '10px', width: '200px' }}>
+        //                 Group</Button>
+        //         </Stack> */}
+             
+        //         <Stack> <Bodytext/> </Stack>
+        //     </Stack>
+
+        //     <Stack flexDirection={'column'} sx={{ backgroundColor: '#262626', width: '1100px' }}>
+        //         <Message_body/>
+        //     </Stack>
+
+        //     <Stack flexDirection={'column'} sx={{ backgroundColor: 'black', width: '331px'}}>
+        //         <RightMenu/>
+        //     </Stack>
+
+        // </Stack>
     )
 }
 export default Sidebar
