@@ -80,14 +80,17 @@ function srcset(image: string, size: number, rows = 1, cols = 1) {
         cols: 2,
     },
     ];
+ 
 const Rightmenu = () =>{
     const [expanded, setExpanded] = React.useState<string | false>(false)
     const handleChange =
       (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
         setExpanded(isExpanded ? panel : false);
+
       };
     return(
-        <Stack flexDirection={'column'} >
+        <Stack flexDirection={'column'} sx={{backgroundColor:'#262626',overflowY: 'auto',
+        overflowX: 'hidden'}} >
             <Stack flexDirection={'column'} sx={{backgroundColor:'#262626', paddingBottom:'20px'}}>
                 <Stack flexDirection={'row'} sx={{mt:'30px'}}>
                     <Stack>
@@ -142,7 +145,7 @@ const Rightmenu = () =>{
                 <Avatar alt="Remy Sharp" src="https://www.pngkey.com/png/detail/804-8049996_male-avatar-job.png" sx={{ml:'138px',width: 56, height: 56}} />
                 <Stack sx={{fontSize: '13pt', m: '0px 140px', mb:'0px', color: 'white'}}>Xshinla</Stack>
                 <Stack sx={{fontSize: '13pt', m: '0px 128px', mb:'0px', color: 'white'}}>@xuanlam</Stack>
-                <Button sx={{color:'white'}}>-------------------------------------------------------------</Button>
+                <Button sx={{color:'white'}}>----------------------------------------------------------</Button>
                 <Stack flexDirection={'row'} sx={{}}>
                     <Accordion sx={{backgroundColor:'#262626'}}>
                         <AccordionSummary

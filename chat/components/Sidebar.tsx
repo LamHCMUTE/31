@@ -1,5 +1,5 @@
 import { Message, Opacity } from "@mui/icons-material"
-import { Avatar, Box, Button, Grid, Paper, Stack, styled, Tab } from "@mui/material"
+import { Avatar, Box, Button, Grid, Paper, Stack, styled, Tab, useTheme } from "@mui/material"
 import MessageIcon from '@mui/icons-material/Message';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Theme } from "@mui/system/createTheme/createTheme";
@@ -26,6 +26,7 @@ import Body from "./Bodytext";
 import Bodytext from "./Bodytext";
 import Message_body from "./Message_body";
 import LeftMenu from "./LeftMenu";
+import Show_message from "./Show_message";
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -57,34 +58,53 @@ const Sidebar = () => {
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
-
-  const Item = styled(Paper)(({ theme }) => ({
+const theme = useTheme();
+const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
   }));
+
+const styles ={
+    homeStyle: {
+        [theme.breakpoints.up(0)]: {
+            overflowY: 'auto',
+            overflowX: 'hidden',
+            // height: '100vh',
+            height:'100%',
+            backgroundColor:'#262626'
+        },
+    },
+}
+const responsivePaper = {
+    flex:{xs:'100%', sm:'calc(50% - 20px)',md:'calc(33% - 20px)'}
+}
     return (
         <Grid container spacing={0} columns={30}>
 
-            <Grid item xs={1} sx={{height:'970px',backgroundColor:'red'}}> 
+            <Grid item xs={1} sx={{height:'970px'}}> 
                 <Paper sx={{backgroundColor:'black', height:'100%'}}>
                     
                     <LeftMenu />
                 </Paper>
             </Grid>
             
-            <Grid item xs={5}>
-                <Paper> <Bodytext/></Paper>
+            <Grid item xs={5} sx={{backgroundColor:'#262626'}}>
+                
+                <Paper > <Show_message/></Paper>
             </Grid>
 
             <Grid item xs={19}>
-                <Paper><Message_body/></Paper>
+                <Paper sx={{height:'100%'}}><Message_body/></Paper>
             </Grid>
 
-            <Grid item xs={5}>
-                <Paper><RightMenu/></Paper>
+            <Grid item xs={5}  >
+                <Paper sx={[styles.homeStyle]}>
+                    <RightMenu/>
+                    
+                    </Paper>
             </Grid>
 
         </Grid>

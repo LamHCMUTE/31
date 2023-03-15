@@ -39,7 +39,7 @@ const Avatara = () =>{
 
     return(
         <Stack flexDirection={'column'} sx={{justifyContent: "space-evenly", alignItems:'center', textAlign:'left'}}>
-            <Stack flexDirection={'row'} sx={{width:'370px',cursor:'pointer',"&:hover":{backgroundColor: 'black'}, paddingTop:'10px',paddingLeft:'10px'}}>
+            <Stack flexDirection={'row'} sx={{cursor:'pointer',"&:hover":{backgroundColor: 'black'}, paddingTop:'10px',paddingLeft:'10px'}}>
                 <Grid>
                     <StyledBadge
                             overlap="circular"
@@ -54,7 +54,7 @@ const Avatara = () =>{
                 </Grid>
             </Stack>
 
-            <Stack flexDirection={'row'} sx={{width:'370px',textAlign:'right',cursor:'pointer',"&:hover":{backgroundColor: 'black'}, paddingTop:'10px',paddingLeft:'10px'}}>
+            <Stack flexDirection={'row'} sx={{textAlign:'right',cursor:'pointer',"&:hover":{backgroundColor: 'black'}, paddingTop:'10px',paddingLeft:'10px'}}>
                 <Grid>
                 <StyledBadge
                             overlap="circular"
@@ -69,6 +69,20 @@ const Avatara = () =>{
                 </Grid>
             </Stack>
 
+            <Stack flexDirection={'row'} sx={{textAlign:'right',cursor:'pointer',"&:hover":{backgroundColor: 'black'}, paddingTop:'10px',paddingLeft:'10px'}}>
+                <Grid>
+                <StyledBadge
+                            overlap="circular"
+                            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                            variant="dot"
+                        >
+                        <Avatar alt="Remy Sharp" src="https://www.pngkey.com/png/detail/804-8049996_male-avatar-job.png" />
+                    </StyledBadge>
+                </Grid>
+                <Grid>
+                    <Stack sx={{color:'white',m:'20px'}}>Friday, March 10th, 2023</Stack>
+                </Grid>
+            </Stack>
            
         </Stack>
 
